@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<!-- 商品详情展示界面 --><!-- 标题栏 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e0e0e0"
-    android:fitsSystemWindows="true">
-    <!-- 商品详情展示界面 -->
-    <!-- 标题栏 -->
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#fff">
@@ -22,96 +23,122 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="商品详情页" />
-        </RelativeLayout>
+        </FrameLayout>
 
-        <RelativeLayout
+        <slide.DragSlideLayout
+            android:id="@+id/tbl"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <!--<slide.VerticalScrollView-->
+                <!--android:id="@+id/header"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
 
-            <slide.DragSlideLayout
-                android:id="@+id/tbl"
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="100dp"-->
+                        <!--android:background="#f0f"-->
+                        <!--android:gravity="center"-->
+                        <!--android:text="商品" />-->
+                <!--</LinearLayout>-->
+            <!--</slide.VerticalScrollView>-->
+
+            <slide.VerticalTopRecyclerView
+                android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <slide.VerticalScrollView
-                    android:id="@+id/header"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="#f0f"
-                            android:gravity="center"
-                            android:text="商品" />
-                    </LinearLayout>
-                </slide.VerticalScrollView>
-
-                <slide.VerticalRecyclerView
-                    android:id="@+id/footer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scrollbars="none" />
-            </slide.DragSlideLayout>
-
-        </RelativeLayout>
+                android:scrollbars="none" />
+             <slide.VerticalBottomRecyclerView
+                android:id="@+id/footer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none" />
+        </slide.DragSlideLayout>
 
     </LinearLayout>
-</RelativeLayout>
+
+</FrameLayout>

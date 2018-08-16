@@ -136,12 +136,10 @@ public class DragSlideLayout extends ViewGroup {
      */
     private void onViewPosChanged(int viewIndex, int posTop) {
         if (viewIndex == 1) {
-            int offsetTopBottom = viewHeight + frameView1.getTop()
-                    - frameView2.getTop();
+            int offsetTopBottom = viewHeight + frameView1.getTop() - frameView2.getTop();
             frameView2.offsetTopAndBottom(offsetTopBottom);
         } else if (viewIndex == 2) {
-            int offsetTopBottom = frameView2.getTop() - viewHeight
-                    - frameView1.getTop();
+            int offsetTopBottom = frameView2.getTop() - viewHeight - frameView1.getTop();
             frameView1.offsetTopAndBottom(offsetTopBottom);
         }
 

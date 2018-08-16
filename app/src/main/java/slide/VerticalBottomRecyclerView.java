@@ -12,21 +12,21 @@ import android.view.View;
  * author:huangxy
  * date:2018/7/23
  */
-public class VerticalRecyclerView extends RecyclerView {
+public class VerticalBottomRecyclerView extends RecyclerView {
 
     boolean allowDragTop = true; // 如果是true，则允许拖动至底部的下一页
     float downY = 0;
     boolean needConsumeTouch = true; // 是否需要承包touch事件，needConsumeTouch一旦被定性，则不会更改
 
-    public VerticalRecyclerView(Context context) {
+    public VerticalBottomRecyclerView(Context context) {
         this(context, null);
     }
 
-    public VerticalRecyclerView(Context context, AttributeSet attrs) {
+    public VerticalBottomRecyclerView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public VerticalRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public VerticalBottomRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -34,9 +34,11 @@ public class VerticalRecyclerView extends RecyclerView {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             downY = ev.getRawY();
-            needConsumeTouch = true; // 默认情况下，listView内部的滚动优先，默认情况下由该listView去消费touch事件
+            needConsumeTouch = true; // 默认情况下，RecyclerView内部的滚动优先，默认情况下由该RecyclerView去消费touch事件
             allowDragTop = isAtTop();
         } else if (ev.getAction() == MotionEvent.ACTION_MOVE) {
+            allowDragTop = isAtTop();
+
             if (!needConsumeTouch) {
                 // 在最顶端且向上拉了，则这个touch事件交给父类去处理
                 getParent().requestDisallowInterceptTouchEvent(false);
@@ -82,7 +84,6 @@ public class VerticalRecyclerView extends RecyclerView {
                 }
             }
         }
-
         return resultValue;
     }
 }

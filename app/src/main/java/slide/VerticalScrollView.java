@@ -42,6 +42,14 @@ public class VerticalScrollView extends ScrollView {
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
+                if (getScrollY() + getMeasuredHeight() >= computeVerticalScrollRange() - 2) {
+                    // 允许向上拖动底部的下一页
+                    allowDragBottom = true;
+                } else {
+                    // 不允许向上拖动底部的下一页
+                    allowDragBottom = false;
+                }
+
                 if (!needConsumeTouch) {
                     // 在最顶端且向上拉了，则这个touch事件交给父类去处理
                     getParent().requestDisallowInterceptTouchEvent(false);
