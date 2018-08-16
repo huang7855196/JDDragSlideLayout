@@ -1,7 +1,6 @@
 package slide;
 
 import android.content.Context;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
@@ -19,7 +18,7 @@ public class DragSlideLayout extends ViewGroup {
 
     /* 拖拽工具类 */
     private final ViewDragHelper mDragHelper;
-    private GestureDetectorCompat gestureDetector;
+    private GestureDetector gestureDetector;
 
     /* 上下两个frameLayout，在Activity中注入fragment */
     private View frameView1, frameView2;
@@ -42,7 +41,7 @@ public class DragSlideLayout extends ViewGroup {
         mDragHelper = ViewDragHelper
                 .create(this, 10f, new DragHelperCallback());
         mDragHelper.setEdgeTrackingEnabled(ViewDragHelper.EDGE_BOTTOM);
-        gestureDetector = new GestureDetectorCompat(context,
+        gestureDetector = new GestureDetector(context,
                 new YScrollDetector());
     }
 
@@ -77,17 +76,16 @@ public class DragSlideLayout extends ViewGroup {
     private class DragHelperCallback extends ViewDragHelper.Callback {
 
         @Override
-        public void onViewPositionChanged(View changedView, int left, int top,
-                                          int dx, int dy) {
+        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             int childIndex = 1;
             if (changedView == frameView2) {
                 childIndex = 2;
             }
-
             // 一个view位置改变，另一个view的位置要跟进
             onViewPosChanged(childIndex, top);
         }
 
+        // 决定了是否需要捕获这个 child，只有捕获了才能进行下面的拖拽行为
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
             // 两个子View都需要跟踪，返回true
@@ -100,12 +98,14 @@ public class DragSlideLayout extends ViewGroup {
             return 1;
         }
 
+        // 手指释放时的回调
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             // 滑动松开后，需要向上或者乡下粘到特定的位置
             animTopOrBottom(releasedChild, yvel);
         }
 
+        // 修整 child 垂直方向上的坐标，top 指 child 要移动到的坐标，dy 相对上次的偏移量
         @Override
         public int clampViewPositionVertical(View child, int top, int dy) {
             int finalTop = top;
@@ -122,7 +122,6 @@ public class DragSlideLayout extends ViewGroup {
                     finalTop = 0;
                 }
             }
-
             // finalTop代表的是理论上应该拖动到的位置。此处计算拖动的距离除以一个参数(3)，是让滑动的速度变慢。数值越大，滑动的越慢
             return child.getTop() + (finalTop - child.getTop()) / 3;
         }

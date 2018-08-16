@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView viewById = (RecyclerView) findViewById(R.id.footer);
+        RecyclerView footer = (RecyclerView) findViewById(R.id.footer);
         RecyclerView header = (RecyclerView) findViewById(R.id.header);
-        viewById.setLayoutManager(new LinearLayoutManager(this));
+        footer.setLayoutManager(new LinearLayoutManager(this));
         header.setLayoutManager(new LinearLayoutManager(this));
         List list = new ArrayList();
         for (int i = 0; i < 30; i++) {
@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 30; i++) {
             list2.add("我是头部"+i);
         }
-
-        viewById.setAdapter(new MyRecycleAdapter<String>(this,list) {
+        footer.setAdapter(new MyRecycleAdapter<String>(this,list) {
             @Override
             public void getItemView(MyRecycleViewHolder holder, int position, String item) {
                 holder.setText(R.id.tv_name,item);

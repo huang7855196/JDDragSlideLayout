@@ -109,7 +109,6 @@ public abstract class MyRecycleAdapter<T> extends RecyclerView.Adapter<MyRecycle
 	}
 	//设置布局文件
 	public abstract int getItemResource();
-
 	/**
 	 * 创建ViewHolder
 	 */
